@@ -1,245 +1,281 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Installer be-BOP</title>
-  <style>
-    :root {
-      --blue: #003760;
-      --light-blue: #31A5DD;
-      --sky: #C9E7F5;
-      --sky-2: #A5D3EE;
-      --glass: rgba(255,255,255,0.6);
-      --glass-2: rgba(255,255,255,0.4);
-      --radius-xl: 20px;
-      --radius-pill: 999px;
-      --container-pad: clamp(16px, 6vw, 120px);
-      --section-pad-y: clamp(48px, 8vw, 120px);
-    }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Installer be-BOP</title>
+        <style>
+            :root {
+                --blue: #003760;
+                --light-blue: #31a5dd;
+                --sky: #c9e7f5;
+                --sky-2: #a5d3ee;
+                --glass: rgba(255, 255, 255, 0.6);
+                --glass-2: rgba(255, 255, 255, 0.4);
+                --radius-xl: 20px;
+                --radius-pill: 999px;
+                --container-pad: clamp(16px, 6vw, 120px);
+                --section-pad-y: clamp(48px, 8vw, 120px);
+            }
 
-    * { box-sizing: border-box; }
-    
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: var(--sky);
-      color: var(--blue);
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: clamp(16px, 1.4vw, 20px);
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--container-pad);
-    }
+            * {
+                box-sizing: border-box;
+            }
 
-    article {
-      max-width: 700px;
-      width: 100%;
-      margin: 0 auto;
-      background-color: var(--glass);
-      backdrop-filter: blur(8px);
-      border-radius: var(--radius-xl);
-      padding: clamp(24px, 4vw, 48px);
-      box-shadow: 0px 3px 4px 0px rgba(255,255,255,0.8) inset, 
-                  0px -3px 4px 0px rgba(255,255,255,0.8) inset,
-                  0 10px 30px rgba(0, 55, 96, 0.1);
-    }
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: var(--sky);
+                color: var(--blue);
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                font-size: clamp(16px, 1.4vw, 20px);
+                line-height: 1.5;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: var(--container-pad);
+            }
 
-    h2 {
-      color: var(--light-blue);
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      margin: 0 0 1rem 0;
-      line-height: 1.2;
-    }
+            article {
+                max-width: 700px;
+                width: 100%;
+                margin: 0 auto;
+                background-color: var(--glass);
+                backdrop-filter: blur(8px);
+                border-radius: var(--radius-xl);
+                padding: clamp(24px, 4vw, 48px);
+                box-shadow:
+                    0px 3px 4px 0px rgba(255, 255, 255, 0.8) inset,
+                    0px -3px 4px 0px rgba(255, 255, 255, 0.8) inset,
+                    0 10px 30px rgba(0, 55, 96, 0.1);
+            }
 
-    p {
-      color: var(--blue);
-      margin: 1rem 0;
-    }
+            h2 {
+                color: var(--light-blue);
+                font-size: clamp(1.8rem, 5vw, 3rem);
+                margin: 0 0 1rem 0;
+                line-height: 1.2;
+            }
 
-    ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-    }
+            p {
+                color: var(--blue);
+                margin: 1rem 0;
+            }
 
-    li {
-      margin: 0.5rem 0;
-      color: var(--blue);
-    }
+            ul {
+                margin: 1rem 0;
+                padding-left: 1.5rem;
+            }
 
-    strong {
-      color: var(--blue);
-      font-weight: 600;
-    }
+            li {
+                margin: 0.5rem 0;
+                color: var(--blue);
+            }
 
-    section {
-      margin-top: 2rem;
-    }
+            strong {
+                color: var(--blue);
+                font-weight: 600;
+            }
 
-    label {
-      display: block;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      color: var(--blue);
-    }
+            section {
+                margin-top: 2rem;
+            }
 
-    input {
-      width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.3rem;
-      border: 2px solid var(--sky-2);
-      border-radius: 10px;
-      font-size: 1rem;
-      background-color: rgba(255, 255, 255, 0.8);
-      color: var(--blue);
-      transition: all 0.3s ease;
-    }
+            label {
+                display: block;
+                margin-bottom: 1rem;
+                font-weight: 600;
+                color: var(--blue);
+            }
 
-    input:focus {
-      outline: none;
-      border-color: var(--light-blue);
-      background-color: white;
-      box-shadow: 0 0 0 3px rgba(49, 165, 221, 0.1);
-    }
+            input {
+                width: 100%;
+                padding: 0.75rem;
+                margin-top: 0.3rem;
+                border: 2px solid var(--sky-2);
+                border-radius: 10px;
+                font-size: 1rem;
+                background-color: rgba(255, 255, 255, 0.8);
+                color: var(--blue);
+                transition: all 0.3s ease;
+            }
 
-    input:hover {
-      border-color: var(--light-blue);
-    }
+            input:focus {
+                outline: none;
+                border-color: var(--light-blue);
+                background-color: white;
+                box-shadow: 0 0 0 3px rgba(49, 165, 221, 0.1);
+            }
 
-    input::placeholder {
-      color: rgba(0, 55, 96, 0.4);
-    }
+            input:hover {
+                border-color: var(--light-blue);
+            }
 
-    #command {
-      padding: 1.2rem;
-      background-color: var(--blue);
-      color: #fff;
-      border-radius: 10px;
-      white-space: pre-wrap;
-      word-break: break-word;
-      margin-top: 1.5rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      box-shadow: 0 4px 6px rgba(0, 55, 96, 0.2);
-    }
+            input::placeholder {
+                color: rgba(0, 55, 96, 0.4);
+            }
 
-    #copyBtn {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: var(--radius-pill);
-      background: var(--light-blue);
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      transform: translateY(0);
-    }
+            #command {
+                padding: 1.2rem;
+                background-color: var(--blue);
+                color: #fff;
+                border-radius: 10px;
+                white-space: pre-wrap;
+                word-break: break-word;
+                margin-top: 1.5rem;
+                font-family: "Courier New", monospace;
+                font-size: 0.9rem;
+                line-height: 1.4;
+                box-shadow: 0 4px 6px rgba(0, 55, 96, 0.2);
+            }
 
-    #copyBtn:hover {
-      background: var(--blue);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 55, 96, 0.3);
-    }
+            #copyBtn {
+                margin-top: 1rem;
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: var(--radius-pill);
+                background: var(--light-blue);
+                color: white;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                transform: translateY(0);
+            }
 
-    #copyBtn:active {
-      transform: translateY(0);
-    }
+            #copyBtn:hover {
+                background: var(--blue);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 55, 96, 0.3);
+            }
 
-    /* Responsive adjustments */
-    @media (max-width: 700px) {
-      body {
-        align-items: flex-start;
-        padding-top: 2rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <article>
-    <h2>Install be-BOP in a few minutes</h2>
-    <p>To setup be-BOP, you need to &nbsp;:</p>
-    <ul>
-      <li><strong>A domain</strong> : the domain name used to access your be-BOP.</li>
-      <li><strong>An e-mail addresse</strong> : Only used to register on Let's Encrypt (SSL/TLS certificats).</li>
-    </ul>
-    These informations are not sent to our website&nbsp;: they are only used to generate the following command that you'll execute on your machine.
-    <p>&nbsp;</p>
-    <section>
-      <label>
-        Domain :
-        <input id="domain" required type="text" placeholder="exemple.com">
-      </label>
-      <label>
-        E-mail :
-        <input id="email" required type="email" placeholder="admin@exemple.com">
-      </label>
-      <pre id="command">bash &lt;(curl -fsSL https://get.be-bop.io/install.sh)</pre>
-      <button id="copyBtn">Copy the command</button>
-    </section>
-    <p style="margin-top: 2rem; opacity: 0.8;">Once the command has been executed, the installer will automatically configure your environment and deploy be-BOP. You will then be able to access the web interface via your domain.</p>
-  </article>
+            #copyBtn:active {
+                transform: translateY(0);
+            }
 
-  <script>
-    const domainInput = document.getElementById('domain');
-    const emailInput  = document.getElementById('email');
-    const commandPre  = document.getElementById('command');
-    const copyBtn     = document.getElementById('copyBtn');
+            /* Responsive adjustments */
+            @media (max-width: 700px) {
+                body {
+                    align-items: flex-start;
+                    padding-top: 2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <h2>Install be-BOP in a few minutes</h2>
+            <p>To setup be-BOP, you need to &nbsp;:</p>
+            <ul>
+                <li>
+                    <strong>A domain</strong>: the domain name used to access
+                    your be-BOP.
+                </li>
+                <li>
+                    <strong>An e-mail addresse</strong> : Only used to register
+                    on Let's Encrypt (SSL/TLS certificats).
+                </li>
+            </ul>
+            These informations are not sent to our website&nbsp;: they are only
+            used to generate the following command that you'll execute on your
+            machine.
+            <p>&nbsp;</p>
+            <section>
+                <label>
+                    Domain :
+                    <input
+                        id="domain"
+                        required
+                        type="text"
+                        placeholder="exemple.com"
+                    />
+                </label>
+                <label>
+                    E-mail :
+                    <input
+                        id="email"
+                        required
+                        type="email"
+                        placeholder="admin@exemple.com"
+                    />
+                </label>
+                <pre id="command">
+bash &lt;(curl -fsSL https://get.be-bop.io/install.sh)</pre
+                >
+                <button id="copyBtn">Copy the command</button>
+            </section>
+            <p style="margin-top: 2rem; opacity: 0.8">
+                Once the command has been executed, the installer will
+                automatically configure your environment and deploy be-BOP. You
+                will then be able to access the web interface via your domain.
+            </p>
+        </article>
 
-    function isValidDomain(domain) {
-      const re = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,})+$/;
-      return re.test(domain);
-    }
+        <script>
+            const domainInput = document.getElementById("domain");
+            const emailInput = document.getElementById("email");
+            const commandPre = document.getElementById("command");
+            const copyBtn = document.getElementById("copyBtn");
 
-    function isValidEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
+            function isValidDomain(domain) {
+                const re = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,})+$/;
+                return re.test(domain);
+            }
 
-    function updateCommand() {
-      let base = "bash <(curl -fsSL https://get.be-bop.io/install.sh)";
-      let flags = [];
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
 
-      const domain = domainInput.value.trim();
-      const email  = emailInput.value.trim();
+            function updateCommand() {
+                let base =
+                    "bash <(curl -fsSL https://get.be-bop.io/install.sh)";
+                let flags = [];
 
-      const domainValid = isValidDomain(domain);
-      const emailValid  = isValidEmail(email);
+                const domain = domainInput.value.trim();
+                const email = emailInput.value.trim();
 
-      if (domainValid) flags.push(`--domain ${domain}`);
-      if (emailValid) flags.push(`--email ${email}`);
+                const domainValid = isValidDomain(domain);
+                const emailValid = isValidEmail(email);
 
-      let cmd = base;
-      if (flags.length > 0) {
-        cmd += " \\\n  " + flags.join(" \\\n  ");
-      }
+                if (domainValid) flags.push(`--domain ${domain}`);
+                if (emailValid) flags.push(`--email ${email}`);
 
-      commandPre.textContent = cmd;
-    }
+                let cmd = base;
+                if (flags.length > 0) {
+                    cmd += " \\\n  " + flags.join(" \\\n  ");
+                }
 
-    domainInput.addEventListener('input', updateCommand);
-    emailInput.addEventListener('input', updateCommand);
+                commandPre.textContent = cmd;
+            }
 
-    copyBtn.addEventListener('click', () => {
-      const domainValid = isValidDomain(domainInput.value.trim());
-      const emailValid  = isValidEmail(emailInput.value.trim());
+            domainInput.addEventListener("input", updateCommand);
+            emailInput.addEventListener("input", updateCommand);
 
-      if (!(domainValid && emailValid)) {
-        domainInput.reportValidity();
-        emailInput.reportValidity();
-        return;
-      }
+            copyBtn.addEventListener("click", () => {
+                const domainValid = isValidDomain(domainInput.value.trim());
+                const emailValid = isValidEmail(emailInput.value.trim());
 
-      navigator.clipboard.writeText(commandPre.textContent).then(() => {
-        copyBtn.textContent = "Copied ✔";
-        setTimeout(() => copyBtn.textContent = "Copier la commande", 2000);
-      });
-    });
-  </script>
-</body>
+                if (!(domainValid && emailValid)) {
+                    domainInput.reportValidity();
+                    emailInput.reportValidity();
+                    return;
+                }
+
+                navigator.clipboard
+                    .writeText(commandPre.textContent)
+                    .then(() => {
+                        copyBtn.textContent = "Copied ✔";
+                        setTimeout(
+                            () => (copyBtn.textContent = "Copier la commande"),
+                            2000,
+                        );
+                    });
+            });
+        </script>
+    </body>
 </html>
