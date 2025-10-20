@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Installer be-BOP</title>
+        <title>Install be-BOP</title>
         <style>
             :root {
                 --blue: #003760;
@@ -169,38 +169,38 @@
     <body>
         <article>
             <h2>Install be-BOP in a few minutes</h2>
-            <p>To setup be-BOP, you need to &nbsp;:</p>
+            <p>To set up be-BOP, you need:</p>
             <ul>
                 <li>
                     <strong>A domain</strong>: the domain name used to access
                     your be-BOP.
                 </li>
                 <li>
-                    <strong>An e-mail addresse</strong> : Only used to register
-                    on Let's Encrypt (SSL/TLS certificats).
+                    <strong>An email address</strong>: Only used to register
+                    with Let's Encrypt to obtain the TLS certificates to secure
+                    communication between your users and your be-BOP.
                 </li>
             </ul>
-            These informations are not sent to our website&nbsp;: they are only
-            used to generate the following command that you'll execute on your
-            machine.
+            This information is not shared with us or recorded in any way: it is
+            only used to generate the command to automatically deploy be-BOP.
             <p>&nbsp;</p>
             <section>
                 <label>
-                    Domain :
+                    Domain:
                     <input
                         id="domain"
                         required
                         type="text"
-                        placeholder="exemple.com"
+                        placeholder="example.com"
                     />
                 </label>
                 <label>
-                    E-mail :
+                    Email:
                     <input
                         id="email"
                         required
                         type="email"
-                        placeholder="admin@exemple.com"
+                        placeholder="admin@example.com"
                     />
                 </label>
                 <pre id="command">
@@ -271,7 +271,7 @@ bash &lt;(curl -fsSL https://get.be-bop.io/install.sh)</pre
                     .then(() => {
                         copyBtn.textContent = "Copied ✔";
                         setTimeout(
-                            () => (copyBtn.textContent = "Copier la commande"),
+                            () => (copyBtn.textContent = "Copy the command"),
                             2000,
                         );
                     });
