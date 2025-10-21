@@ -50,6 +50,14 @@
         margin: 0.2rem 0px;
       }
 
+      .pricing ul{
+          padding-inline-start: 0px;
+        }
+
+      li{
+        margin-bottom: 0.5rem;
+      }
+
       h1, h2, h4{
         color: var(--light-blue);
         margin:0;
@@ -103,6 +111,7 @@
         justify-content: space-between;
         background-color: var(--glass);
         backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         border-radius: var(--radius-pill);
         box-shadow: 0px 3px 4px 0px #fff inset, 0px -3px 4px 0px #fff inset;
         padding: 0.5rem 1rem;
@@ -898,6 +907,8 @@
           margin-top: .5rem;
           background: var(--glass);
           backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          box-shadow: 0px 3px 4px 0px #fff inset, 0px -3px 4px 0px #fff inset;
           border-radius: 14px;
           padding: .75rem 1rem;
           flex-direction: column;
@@ -927,6 +938,11 @@
           grid-template-columns: 1fr;
           text-align: left;
         }
+
+        .carousel-content {
+          padding-inline: clamp(2rem, 1.5vw, 4rem);
+        }
+
         .founders {
         gap: clamp(16px, 3vw, 24px);
       }
