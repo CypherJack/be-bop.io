@@ -109,11 +109,7 @@
         align-items: center;
         gap: 1rem;
         justify-content: space-between;
-        background-color: var(--glass);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
         border-radius: var(--radius-pill);
-        box-shadow: 0px 3px 4px 0px #fff inset, 0px -3px 4px 0px #fff inset;
         padding: 0.5rem 1rem;
       }
 
@@ -805,6 +801,25 @@
 
       /* Tablet and up */
       @media (min-width: 700px){
+        nav {
+          background-color: var(--glass);
+          backdrop-filter: blur(8px);
+          box-shadow: 
+            0 1px 2px rgba(255, 255, 255, 0.9) inset,
+            0 -1px 2px rgba(255, 255, 255, 0.9) inset,
+            0 8px 32px rgba(0, 55, 96, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        nav ul {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: clamp(0.5rem, 4vw, 2rem);
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
 
         .carousel-content {
           grid-template-columns: 1.2fr 1fr;
@@ -891,24 +906,48 @@
       /* Mobile (nav + layout tweaks) */
       @media (max-width: 699.98px){
         nav{
+          background-color: var(--glass);
           width: calc(100% - 2*12px);
           left: 12px; right: 12px; transform: none;
+          box-shadow: 
+            0 1px 0 rgba(255, 255, 255, 0.8) inset,
+            0 4px 12px rgba(0, 55, 96, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.4);
         }
         
         /* Hide desktop Get Started button on mobile */
         nav > .btn {
           display: none;
         }
+
+        nav::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-color: transparent;
+          backdrop-filter: blur(8px);
+          border-radius: inherit;
+          pointer-events: none;
+          z-index: -1;
+        }
+        
+        nav > *:not(ul) {
+          position: relative;
+          z-index: 1;
+        }
         
         nav ul{
-          position: absolute;
-          top: 100%;
+          position: fixed;
+          top: calc(12px + 60px);
           left: 0; right: 0;
           margin-top: .5rem;
           background: var(--glass);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-          box-shadow: 0px 3px 4px 0px #fff inset, 0px -3px 4px 0px #fff inset;
+          box-shadow: 
+            0px 3px 4px 0px rgba(255, 255, 255, 0.8) inset, 
+            0px -3px 4px 0px rgba(255, 255, 255, 0.8) inset,
+            0 8px 24px rgba(0, 55, 96, 0.12);
           border-radius: 14px;
           padding: .75rem 1rem;
           flex-direction: column;
