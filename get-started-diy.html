@@ -1168,18 +1168,91 @@
             </details>
 
             <script>
+                const domainInput = document.getElementById("domain");
+                const emailInput = document.getElementById("email");
+                const cmdEl = document.getElementById("install-cmd");
                 const copyBtn = document.getElementById("copy-btn");
-                const codeEl = document.getElementById("install-cmd");
                 const statusEl = document.getElementById("copy-status");
-                if (copyBtn) {
-                    copyBtn.addEventListener("click", () => {
-                        const cmd = codeEl.textContent.trim();
-                        navigator.clipboard.writeText(cmd).then(() => {
-                            statusEl.textContent = "Copied to clipboard";
-                            setTimeout(() => (statusEl.textContent = ""), 2000);
-                        });
-                    });
+
+                // Accept real domains or localhost
+                const domainPattern =
+                    /^(localhost|[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
+                // Require both fields; tighten email a bit beyond the very-permissive HTML5 type=email
+                domainInput.required = true;
+                emailInput.required = true;
+                emailInput.setAttribute(
+                    "pattern",
+                    "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+                );
+
+                function validateDomain() {
+                    const val = domainInput.value.trim();
+                    domainInput.setCustomValidity(""); // clear previous custom error
+                    if (!val) {
+                        domainInput.setCustomValidity("Please enter a domain.");
+                    } else if (!domainPattern.test(val)) {
+                        domainInput.setCustomValidity(
+                            "Please enter a valid domain (e.g. myapp.example.com or localhost).",
+                        );
+                    }
                 }
+
+                function validateEmail() {
+                    const val = emailInput.value.trim();
+                    emailInput.setCustomValidity(""); // clear previous custom error *before* checkValidity()
+                    if (!val) {
+                        emailInput.setCustomValidity(
+                            "Please enter an email address.",
+                        );
+                    } else if (!emailInput.checkValidity()) {
+                        // Fails native type+pattern validation
+                        emailInput.setCustomValidity(
+                            "Please enter a valid email (e.g. you@example.com).",
+                        );
+                    }
+                }
+
+                function updateCommand() {
+                    validateDomain();
+                    validateEmail();
+                    const d = domainInput.value.trim();
+                    const e = emailInput.value.trim();
+                    let base =
+                        "bash <(curl -fsSL https://be-bop.io/wizard/install.sh)";
+                    if (domainInput.checkValidity()) base += ` --domain "${d}"`;
+                    if (emailInput.checkValidity()) base += ` --email "${e}"`;
+                    cmdEl.textContent = base;
+                }
+
+                domainInput.addEventListener("input", updateCommand);
+                emailInput.addEventListener("input", updateCommand);
+
+                copyBtn.addEventListener("click", async () => {
+                    validateDomain();
+                    validateEmail();
+
+                    if (!domainInput.checkValidity()) {
+                        domainInput.reportValidity();
+                        domainInput.focus();
+                        return;
+                    }
+                    if (!emailInput.checkValidity()) {
+                        emailInput.reportValidity();
+                        emailInput.focus();
+                        return;
+                    }
+
+                    try {
+                        await navigator.clipboard.writeText(
+                            cmdEl.textContent.trim(),
+                        );
+                        statusEl.textContent = "Command copied to clipboard.";
+                        setTimeout(() => (statusEl.textContent = ""), 2500);
+                    } catch {
+                        statusEl.textContent = "Clipboard copy failed.";
+                    }
+                });
             </script>
         </div>
         <footer>
