@@ -789,7 +789,11 @@
                     </li>
                     <li>
                         <strong>A domain name</strong> you control. Example:
-                        <code>myapp.example.com</code>
+                        <code>example.com</code><br />
+                        You will need <strong>two DNS records</strong> pointing
+                        to your server:
+                        <pre><code>example.com      → A / AAAA → your server IP
+s3.example.com   → A / AAAA → your server IP</code></pre>
                     </li>
                     <li>
                         <strong>An email address</strong> used <em>only</em> for
@@ -817,14 +821,12 @@
                             placeholder="myapp.example.com"
                             aria-describedby="domain-help"
                         />
-                        <small id="domain-help"
-                            >No domain yet? You can register one with any
-                            registrar. After purchase, create an
-                            <strong>A record</strong> pointing to your server's
-                            IPv4 address. If your machine has an IPv6 address,
-                            also create an <strong>AAAA record</strong>.
-                            <a href="#dns-help">Learn how</a>.</small
-                        >
+                        <small id="domain-help">
+                            be-BOP uses your main domain and an
+                            <code>s3.&lt;domain&gt;</code> subdomain. See the
+                            <a href="#req-title">Requirements</a> section above
+                            for which DNS records to create.
+                        </small>
                     </div>
 
                     <div>
@@ -929,33 +931,39 @@
                         will work fine.
                     </p>
                     <h3>2) Get a domain name</h3>
-                    <ul>
-                        <li>
-                            Register a domain with any registrar you prefer.
-                            Popular choices work fine; be-BOP is
-                            provider-agnostic.
-                        </li>
-                        <li>
-                            Decide on a hostname (e.g.
-                            <code>yourdomain.tld</code> or
-                            <code>shop.yourdomain.tld</code>).
-                        </li>
-                    </ul>
+                    <p>
+                        Register a domain with any provider you prefer. You may
+                        use your root domain (e.g. <code>example.com</code>) or
+                        a subdomain (e.g. <code>shop.example.com</code>).
+                    </p>
+                    <p>You will set up DNS for it in the next step.</p>
                     <h3>3) Point DNS to your server</h3>
+                    <p>
+                        Configure DNS so that your chosen hostname
+                        <strong>and</strong> its companion
+                        <code>s3.</code> subdomain both resolve to your server:
+                    </p>
                     <ul>
                         <li>
-                            Create an <strong>A</strong> record for your
-                            hostname pointing to your server's IPv4 address. You
-                            can usually find this setting in your domain
+                            <strong>Create A records (IPv4)</strong>
+                            <pre><code>chosen-hostname       → A → your server IPv4
+s3.chosen-hostname    → A → your server IPv4</code></pre>
+
+                            You can usually find this setting in your domain
                             registrar or DNS provider's dashboard, often under
                             sections called “DNS Management” or “Zone Editor.”
                             The IPv4 address is a series of four numbers
                             separated by dots, like <code>203.0.113.42</code>.
                         </li>
                         <li>
-                            If your server also has IPv6 (not all providers
-                            offer it), add an <strong>AAAA</strong> record. An
-                            IPv6 address looks different — for example,
+                            <strong
+                                >If your server has IPv6, create AAAA
+                                records</strong
+                            >
+                            <pre><code>chosen-hostname       → AAAA → your server IPv6
+s3.chosen-hostname    → AAAA → your server IPv6</code></pre>
+
+                            An IPv6 address looks different — for example,
                             <code>2001:db8::1234</code>. If your provider
                             doesn’t list an IPv6 address for your server, you
                             can safely skip this step.
