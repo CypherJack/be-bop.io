@@ -582,15 +582,6 @@ border-radius: 5px;
       box-shadow: 0 10px 30px rgba(0, 55, 96, 0.15);
     }
 
-    .price-free, .price-paid{
-      text-align: right;
-      margin: 0;
-      font-weight: 800;
-      font-size: 2rem;
-    }
-
-    .price-free{ color: #FFF; }
-
     /* Socials */
     #socials{
       background-color: var(--blue);
@@ -755,7 +746,7 @@ border-radius: 5px;
     transform: translateX(3px);
   }
 
-  a[href^="mailto"] {
+  .contact-link {
     font-size: clamp(1rem, 1.4vw, 1.2rem);
     font-weight: 600;
     color: var(--light-blue);
@@ -766,7 +757,7 @@ border-radius: 5px;
     color: white;
   }
 
-  a[href^="mailto"]:hover {
+  .contact-link:hover {
     color: white;
   }
 
@@ -996,13 +987,13 @@ border-radius: 5px;
       text-align: center;
     }
 
-    footer a[href^="mailto"] {
+    footer .contact-link {
       padding-left: 0;
       display: block;
       margin: 1rem 0;
     }
 
-    footer a[href^="mailto"]:before {
+    footer .contact-link:before {
       position: static;
       margin-right: 0.5rem;
     }
@@ -1162,7 +1153,6 @@ border-radius: 5px;
     <h2 class="font-extrabold">Get Started</h2>
     <div class="pricing">
       <div class="price-tier-free">
-        <p class="price-free">$0</p>
         <h3>DIY <br>self-hosted</h3>
         <p>Deploy your own be-BOP environment and explore the full power of our monetization platform.
           <ul>
@@ -1173,11 +1163,10 @@ border-radius: 5px;
             <li>Freedom to customize, integrate, and scale</li>
           </ul>
           No installer or support services included, ideal for developers, tech-savy users, or independent businesses who want full control over their setup.</p>
-        <a class="btn" href="">Install it yourself!</a>
+        <a class="btn" href="">Install it for free!</a>
       </div>
 
       <div class="price-tier-paid">
-        <p class="price-paid">Paid</p>
         <h3>Certified <br>installers</h3>
         <p>Let a certified installer handle your be-BOP setup so you can focus on your business.
           <ul>
@@ -1190,11 +1179,10 @@ border-radius: 5px;
           </ul>
           The benefit: a turnkey solution, no technical hassle.
         </p>
-        <a class="btn" href="">Comming soon!</a>
+        <a class="btn" href="">Coming soon!</a>
       </div>
 
       <div class="price-tier-paid">
-        <p class="price-paid">Paid</p>
         <h3>Tailored <br>be-BOP</h3>
         <p>A fully customized be-BOP environment designed around your organization. Developed, configured, and maintained by the be-BOP team in collaboration with your IT and business experts.
           <ul>
@@ -1205,7 +1193,7 @@ border-radius: 5px;
           </ul>
           Ideal for large organizations, institutions, or networks that need a tailored, secure, and enterprise-grade version of be-BOP, built just for them. 
         </p>
-        <a class="btn" href="mailto:contact@be-bop.io">Contact us!</a>
+        <a class="btn" href="/contact?lang=en">Contact us!</a>
       </div>
     </div>
   </section>
@@ -1262,7 +1250,7 @@ border-radius: 5px;
       2000 Neuchâtel<br/>
       Switzerland
     </div>
-    <a href="mailto:contact@be-bop.io">contact@be-bop.io</a>
+    <a class="contact-link" href="/contact?lang=en">contact@be-bop.io</a>
     <div class="boring-links">
       <a id="partners" href="https://be-bop.io/terms">Conditions d'utilisation</a>
       <a href="https://be-bop.io/privacy">Politique de confidentialité</a>
