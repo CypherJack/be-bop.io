@@ -540,6 +540,20 @@
             .boring-links a:hover {
                 opacity: 1;
             }
+
+            .contact-nostr {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .contact-nostr-copy {
+                background: transparent;
+                border: 0;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
             /* Tablet and up */
             @media (min-width: 700px) {
                 nav {
@@ -975,6 +989,125 @@
                             process.
                         </li>
                     </ul>
+                    <h3>5) Where and how to get help</h3>
+                    <p>
+                        If something doesn’t work as expected, don’t worry — we
+                        can help you troubleshoot. When reaching out, please
+                        include a few details so we can understand your setup
+                        quickly:
+                    </p>
+                    <ul>
+                        <li>
+                            The <strong>hosting provider</strong> where your
+                            server is running.
+                        </li>
+                        <li>
+                            The <strong>domain registrar</strong> you used for
+                            your DNS settings.
+                        </li>
+                        <li>
+                            Your <strong>domain name</strong> and basic
+                            <strong>server specs</strong> (a screenshot of your
+                            VPS page usually shows this).
+                        </li>
+                        <li>
+                            A
+                            <strong>screenshot of the error message</strong> and
+                            any visible output, or note if nothing appeared.
+                        </li>
+                    </ul>
+                    <p>
+                        You can also include the full command output if you
+                        already ran the installation.
+                    </p>
+                    <p>
+                        🪪 <strong>Contact options:</strong><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;• Email:
+                        <a href="mailto:contact@be-bop.io">contact@be-bop.io</a
+                        ><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;• Nostr:
+                        <span class="contact-nostr">
+                            <code id="nostr-id"
+                                >npub16l9pnrkhhagkucjhxvvztz2czv9ex8s5u7yg80ghw9ccjp4j25pqaku4ha</code
+                            >
+                            <button
+                                id="copy-nostr"
+                                aria-label="Copy nostr id"
+                                title="Copy nostr id"
+                                class="contact-nostr-copy"
+                            >
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M16 1H4a2 2 0 0 0-2 2v12"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <rect
+                                        x="8"
+                                        y="5"
+                                        width="13"
+                                        height="13"
+                                        rx="2"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                            <span
+                                id="nostr-copy-status"
+                                aria-live="polite"
+                                style="font-size: 0.9rem; color: inherit"
+                            ></span>
+                        </span>
+                    </p>
+
+                    <script>
+                        (function () {
+                            const btn = document.getElementById("copy-nostr");
+                            const idEl = document.getElementById("nostr-id");
+                            const status =
+                                document.getElementById("nostr-copy-status");
+
+                            if (!btn || !idEl) return;
+
+                            btn.addEventListener("click", async () => {
+                                const text = idEl.textContent.trim();
+                                try {
+                                    await navigator.clipboard.writeText(text);
+                                    status.textContent = "Copied";
+                                    setTimeout(() => {
+                                        status.textContent = "";
+                                    }, 2500);
+                                } catch (e) {
+                                    // fallback: select so user can copy manually
+                                    try {
+                                        const range = document.createRange();
+                                        range.selectNodeContents(idEl);
+                                        const sel = window.getSelection();
+                                        sel.removeAllRanges();
+                                        sel.addRange(range);
+                                    } catch (err) {
+                                        /* ignore */
+                                    }
+                                    status.textContent =
+                                        "Select and copy manually";
+                                    setTimeout(() => {
+                                        status.textContent = "";
+                                    }, 3500);
+                                }
+                            });
+                        })();
+                    </script>
                 </div>
             </details>
 
